@@ -61,8 +61,8 @@ function startAnimation(animationId) {
     case 'waveButton':
       currentAnimation = waveAnimation;
       break;
-    case 'particleExplosionButton':
-      currentAnimation = particleExplosionAnimation;
+    case 'patternsButton':
+      currentAnimation = patternsAnimation;
       break;
     case 'fireworksButton':
       currentAnimation = fireworksAnimation;
@@ -191,3 +191,18 @@ function waveAnimation() {
     ellipse(x, y, 10, 10);
   }
 }
+
+
+function patternsAnimation() {
+    createCanvas(710, 400);
+    background(102);
+    variableEllipse(mouseX, mouseY, pmouseX, pmouseY);
+  
+   
+  }
+  
+  function variableEllipse(x, y, px, py) {
+    let speed = abs(x - px) + abs(y - py);
+    stroke(speed);
+    ellipse(x, y, speed, speed);
+  }
