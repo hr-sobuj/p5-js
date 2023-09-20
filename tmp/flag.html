@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+  <script>
+  function setup() {
+      createCanvas(400, 200);
+    }
+    
+    function draw() {
+      background(255);
+      drawBangladeshFlag();
+    }
+    
+    function drawBangladeshFlag() {
+      // Green background
+      fill(0, 128, 0);
+      rect(0, 0, width, height);
+    
+      // Red circle
+      fill(255, 0, 0);
+      let circleX = width / 2;
+      let circleY = height / 2;
+      let circleSize = min(width, height) * 0.6;
+      ellipse(circleX, circleY, circleSize);
+    }
+  </script>
+</body>
+</html>
