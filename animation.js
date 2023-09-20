@@ -49,13 +49,18 @@ function startAnimation(animationId) {
     case 'randomSquaresButton':
       currentAnimation = randomSquaresAnimation;
       break;
+    case 'spinningSquaresButton':
+      currentAnimation = spinningSquaresAnimation;
+      break;
+    case 'heartBeatButton':
+      currentAnimation = heartBeatAnimation;
+      break;
+    // Add more animations and cases here
     default:
       currentAnimation = null;
   }
   loop();
 }
-
-// Add more animation functions here
 
 function zoomAnimation() {
   // Zoom In and Out animation code
@@ -127,4 +132,38 @@ function randomSquaresAnimation() {
     fill(random(255), random(255), random(255));
     rect(x, y, size, size);
   }
+}
+
+function spinningSquaresAnimation() {
+  // Spinning Squares animation code
+  translate(width / 2, height / 2);
+  rotate(frameCount * 0.05);
+  for (let i = 0; i < 4; i++) {
+    rect(-25, -25, 50, 50);
+    rotate(PI / 2);
+  }
+}
+
+function heartBeatAnimation() {
+  // Heartbeat animation code
+  let size = map(sin(frameCount * 0.05), -1, 1, 50, 150);
+  beginShape();
+  vertex(width / 2, height / 2 - size * 1.5);
+  bezierVertex(
+    width / 2 - size * 1.5,
+    height / 2 - size / 2,
+    width / 2 - size * 0.5,
+    height / 2 + size / 2,
+    width / 2,
+    height / 2 + size * 1.5
+  );
+  bezierVertex(
+    width / 2 + size * 0.5,
+    height / 2 + size / 2,
+    width / 2 + size * 1.5,
+    height / 2 - size / 2,
+    width / 2,
+    height / 2 - size * 1.5
+  );
+  endShape(CLOSE);
 }
