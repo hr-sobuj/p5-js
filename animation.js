@@ -3,7 +3,7 @@ let canvas;
 
 function setup() {
   canvas = createCanvas(400, 400);
-  canvas.parent('canvasContainer');
+  canvas.parent('canvasContainer'); // Make sure the canvas is inside the correct container
   noLoop();
 
   const animationButtons = document.querySelectorAll('.animationButton');
@@ -19,6 +19,9 @@ function draw() {
     currentAnimation();
   }
 }
+
+// Rest of your animation functions, including particleExplosionAnimation and fireworksAnimation
+
 
 function startAnimation(animationId) {
   switch (animationId) {
@@ -55,12 +58,23 @@ function startAnimation(animationId) {
     case 'heartBeatButton':
       currentAnimation = heartBeatAnimation;
       break;
+    case 'waveButton':
+      currentAnimation = waveAnimation;
+      break;
+    case 'particleExplosionButton':
+      currentAnimation = particleExplosionAnimation;
+      break;
+    case 'fireworksButton':
+      currentAnimation = fireworksAnimation;
+      break;
     // Add more animations and cases here
     default:
       currentAnimation = null;
   }
   loop();
 }
+
+// Animation Functions
 
 function zoomAnimation() {
   // Zoom In and Out animation code
@@ -166,4 +180,14 @@ function heartBeatAnimation() {
     height / 2 - size * 1.5
   );
   endShape(CLOSE);
+}
+
+function waveAnimation() {
+  // Wave animation code
+  let amplitude = 50;
+  let frequency = 0.02;
+  for (let x = 0; x < width; x += 10) {
+    let y = height / 2 + sin(frameCount * frequency + x * 0.1) * amplitude;
+    ellipse(x, y, 10, 10);
+  }
 }
